@@ -3,7 +3,7 @@
 // This enables autocomplete, go to definition, etc.
 
 import { envConfig } from "../_shared/env.config.ts";
-import { corsHeaders } from "../_shared/cors.ts";
+import { commonHeaders } from "../_shared/headers.ts";
 
 Deno.serve(async (req: Request) => {
   const { phoneNumberId, assistantId, customerNumber } = await req.json();
@@ -27,17 +27,14 @@ Deno.serve(async (req: Request) => {
     );
 
     return new Response(JSON.stringify(response), {
-      headers: { "Content-Type": "application/json", ...corsHeaders },
+      headers: commonHeaders,
     });
   } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 500, headers: { ...commonHeaders } },
+    );
   }
-  const data = {
-    message: `Hello ${name}!`,
-  };
-
-  return new Response(JSON.stringify(data), {
-    headers: { "Content-Type": "application/json", ...corsHeaders },
-  });
 });
 
 /* To invoke locally:

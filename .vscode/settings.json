@@ -6,5 +6,9 @@
   "deno.unstable": true,
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
-  }
+  },
+  "deno.enable": true, 
+  "deno.importMap": "../supabase/functions/import_map.json", 
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 120
 }
