@@ -6,6 +6,10 @@ import { commonHeaders } from "../_shared/headers.ts";
 import { VapiPayload, VapiWebhookEnum } from "../_shared/vapi.types.ts";
 
 Deno.serve(async (req: Request) => {
+  const url = new URL(req.url);
+  if (req.method !== "POST" || url.pathname !== "/inbound") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
   const reqBody = await req.json();
 
   try {

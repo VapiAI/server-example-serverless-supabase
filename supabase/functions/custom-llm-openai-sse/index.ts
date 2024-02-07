@@ -6,6 +6,13 @@ import { commonHeaders } from "../_shared/headers.ts";
 import { envConfig } from "../_shared/env.config.ts";
 
 Deno.serve(async (req) => {
+  const url = new URL(req.url);
+  if (
+    req.method !== "POST" ||
+    url.pathname !== "/custom-llm-openai-sse/chat/completions"
+  ) {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ message: "Not Found" }), {
       status: 404,
@@ -27,20 +34,12 @@ Deno.serve(async (req) => {
     } = await req.json();
 
     if (stream) {
-      // const completionStream = await openai.chat.completions.create({
-      //   model: model || "gpt-3.5-turbo",
-      //   ...restParams,
-      //   messages,
-      //   max_tokens: max_tokens || 150,
-      //   temperature: temperature || 0.7,
-      //   stream: true,
-      // } as OpenAI.Chat.ChatCompletionCreateParamsStreaming);
-
       const completionOptions = {
-        model: "gpt-3.5-turbo",
+        model: model || "gpt-3.5-turbo",
+        ...restParams,
         messages,
-        max_tokens: 512,
-        temperature: 0,
+        max_tokens: max_tokens || 150,
+        temperature: temperature || 0.7,
         stream: true,
       };
 
@@ -58,6 +57,7 @@ Deno.serve(async (req) => {
 
       if (!response.ok) {
         const error = await response.json();
+        console.log("error", error);
         throw new Error("Failed to generate completion", error);
       }
 
@@ -68,24 +68,6 @@ Deno.serve(async (req) => {
           "Content-Type": "text/event-stream",
         },
       });
-
-      // const readableStream = new ReadableStream({
-      //   async start(controller) {
-      //     for await (const data of completionStream) {
-      //       controller.enqueue(`data: ${JSON.stringify(data)}\n\n`);
-      //     }
-      //     // controller.close();
-      //   },
-      // });
-
-      // return new Response(readableStream, {
-      //   headers: {
-      //     ...commonHeaders,
-      //     "Content-Type": "text/event-stream",
-      //     "Cache-Control": "no-cache",
-      //     "Connection": "keep-alive",
-      //   },
-      // });
     } else {
       const completion = await openai.chat.completions.create({
         model: model || "gpt-3.5-turbo",

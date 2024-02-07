@@ -6,6 +6,10 @@ import { envConfig } from "../_shared/env.config.ts";
 import { commonHeaders } from "../_shared/headers.ts";
 
 Deno.serve(async (req: Request) => {
+  const url = new URL(req.url);
+  if (req.method !== "POST" || url.pathname !== "/outbound") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
   const { phoneNumberId, assistantId, customerNumber } = await req.json();
   try {
     const response = await fetch(

@@ -5,7 +5,7 @@ export const envConfig = {
     apiKey: Deno.env.get("WEATHER_API_KEY") ?? ``,
   },
   openai: {
-    apiKey: Deno.env.get("OPENAI_API_KEY") ?? `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`,
+    apiKey: Deno.env.get("OPENAI_API_KEY") ?? ``,
   },
   vapi: {
     baseUrl: Deno.env.get("VAPI_BASE_URL") ?? "https://api.vapi.ai",

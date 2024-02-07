@@ -1,5 +1,5 @@
-import { SimpleDirectoryReader, VectorStoreIndex } from "npm:llamaindex";
-import path from "node:path";
+// import { SimpleDirectoryReader, VectorStoreIndex } from "npm:llamaindex";
+// import path from "node:path";
 
 interface GetCharacterInspirationParams {
   inspiration: string;
@@ -14,14 +14,22 @@ export const getCharacterInspiration = async ({
   };
   if (inspiration) {
     try {
-      const documents = await new SimpleDirectoryReader().loadData({
-        directoryPath: path.join(__dirname, "../data"),
-      });
+      /**
+       * Using a deno compatible library to perform RAG operations.
+       */
+      // const documents = await new SimpleDirectoryReader().loadData({
+      //   directoryPath: path.join(__dirname, "../data"),
+      // });
 
-      const index = await VectorStoreIndex.fromDocuments(documents);
+      // const index = await VectorStoreIndex.fromDocuments(documents);
 
-      const queryEngine = index.asQueryEngine();
-      const response = await queryEngine.query({ query: inspiration });
+      // const queryEngine = index.asQueryEngine();
+      // const response = await queryEngine.query({ query: inspiration });
+
+      const response = {
+        response:
+          "This is a placeholder response for the getCharacterInspiration function. It should be replaced with the actual implementation.",
+      };
 
       return { result: response.response, forwardToClientEnabled: true };
     } catch (error) {
