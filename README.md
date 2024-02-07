@@ -38,7 +38,7 @@ To get started with this project:
    1. Using Ngrok: Start the project locally using `pnpm start` and then use ngrok to get the url.
    2. Using Supabase: Deploy to supabase using `pnpm deploy:prod` and get the url for the serverURL.
 
-   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/functions/v1/webhook` This has all the messages placeholder. You can also try `https://<domain>/functions/v1/functions/basic` or `https://<domain>/functions/v1/rag`
+   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/functions/v1/webhook` This has all the messages placeholder. You can also try `https://<domain>/functions/v1/functions-basic` or `https://<domain>/functions/v1/rag`
 
 4. There are sample request body in `./assistants` folder. Use them to create an assistant using the POST endpoint `https://api.vapi.ai/functions/v1/assistant` with any of the body from `./assistants`.
 5. Now you have an assistant created which you can talk with from the Vapi Dashboard.
