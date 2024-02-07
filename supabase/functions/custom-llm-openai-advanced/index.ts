@@ -11,7 +11,8 @@ console.log("Hello from Functions!");
 Deno.serve(async (req) => {
   const url = new URL(req.url);
   if (
-    req.method !== "POST" || url.pathname !== "/openai-sse/chat/completions"
+    req.method !== "POST" ||
+    url.pathname !== "/custom-llm-openai-advanced/chat/completions"
   ) {
     return new Response("Method Not Allowed", { status: 405 });
   }
