@@ -1,6 +1,6 @@
-# Vapi Example for Deno
+# Vapi Example for Supabase
 
-Welcome to the Vapi sample project using deno. This project demonstrates how you can extend the functionalities of Vapi, an abstraction layer for your personal assistant, to create a unique experience tailored for story writers. Using this project, writers can design characters for their stories through voice interactions with the assistant.
+Welcome to the Vapi sample project using Supabase. This project demonstrates how you can extend the functionalities of Vapi, an abstraction layer for your personal assistant, to create a unique experience tailored for story writers. Using this project, writers can design characters for their stories through voice interactions with the assistant.
 
 ## Project Overview
 
@@ -24,9 +24,10 @@ To get started with this project:
 
 1. Clone the repository to your local machine.
 2. Install the dependencies by running `pnpm install`.
-3. Setup `.env` by command `cp example.env .env` in the root directory.
-4. You can start the project locally using command `pnpm start`
-5. You can deploy the project to Deno using command `pnpm deploy:prod`
+3. Setup `.env` by command `cp example.env .env` in the supabase directory.
+4. You can start the supabase locally using command `pnpm start`
+5. You can now start the project locally using the command `pnpm serve`
+6. You can deploy the project to Supabase using command `pnpm deploy:prod`
 
 #### Configuration
 
@@ -35,11 +36,11 @@ To get started with this project:
 3. Get ServerURL
 
    1. Using Ngrok: Start the project locally using `pnpm start` and then use ngrok to get the url.
-   2. Using Deno: Deploy to heroku/railway or others and get the url for the serverURL.
+   2. Using Supabase: Deploy to supabase using `pnpm deploy:prod` and get the url for the serverURL.
 
-   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/api/webhook` This has all the messages placeholder. You can also try `https://<domain>/api/functions/basic` or `https://<domain>/api/rag`
+   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/functions/v1/webhook` This has all the messages placeholder. You can also try `https://<domain>/functions/v1/functions/basic` or `https://<domain>/functions/v1/rag`
 
-4. There are sample request body in `./assistants` folder. Use them to create an assistant using the POST endpoint `https://api.vapi.ai/api/assistant` with any of the body from `./assistants`.
+4. There are sample request body in `./assistants` folder. Use them to create an assistant using the POST endpoint `https://api.vapi.ai/functions/v1/assistant` with any of the body from `./assistants`.
 5. Now you have an assistant created which you can talk with from the Vapi Dashboard.
 
 #### Explore and make changes.
@@ -62,9 +63,9 @@ This sample project illustrates the power of Vapi customization for specific use
 
 For additional help and documentation, refer to the official [Vapi documentation](https://docs.vapi.ai).
 
-# Vapi Example for Deno
+# Vapi Example for Supabase
 
-Welcome to the Vapi sample project using deno. This project demonstrates how you can extend the functionalities of Vapi, an abstraction layer for your personal assistant, to create a unique experience tailored for story writers. Using this project, writers can design characters for their stories through voice interactions with the assistant.
+Welcome to the Vapi sample project using Supabase. This project demonstrates how you can extend the functionalities of Vapi, an abstraction layer for your personal assistant, to create a unique experience tailored for story writers. Using this project, writers can design characters for their stories through voice interactions with the assistant.
 
 ## Project Overview
 
@@ -88,9 +89,9 @@ To get started with this project:
 
 1. Clone the repository to your local machine.
 2. Install the dependencies by running `pnpm install`.
-3. Setup `.env` by command `cp example.env .env` in the root directory.
+3. Setup `.env` by command `cp example.env .env` in the supabase directory.
 4. You can start the project locally using command `pnpm start`
-5. You can deploy the project to Deno using command `pnpm deploy:prod`
+5. You can deploy the project to Supabase using command `pnpm deploy:prod`
 
 #### Configuration
 
@@ -99,9 +100,9 @@ To get started with this project:
 3. Get ServerURL
 
    1. Using Ngrok: Start the project locally using `pnpm start` and then use ngrok to get the url.
-   2. Using Deno: Deploy to heroku/railway or others and get the url for the serverURL.
+   2. Using Supabase: Deploy to heroku/railway or others and get the url for the serverURL.
 
-   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/api/webhook` This has all the messages placeholder. You can also try `https://<domain>/api/functions/basic` or `https://<domain>/api/rag`
+   The serverURL to be configured in the **Dashboard > Accounts > Settings** is `https://<domain>/functions/v1/webhook` This has all the messages placeholder. You can also try `https://<domain>/functions/v1/functions/basic` or `https://<domain>/functions/v1/rag`
 
 4. There are sample request body in `./assistants` folder. Use them to create an assistant using the POST endpoint `https://api.vapi.ai/api/assistant` with any of the body from `./assistants`.
 5. Now you have an assistant created which you can talk with from the Vapi Dashboard.
